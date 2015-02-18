@@ -53,7 +53,7 @@ gem install droplet_kit
 Then clone the repo to a directory of your choice:
 
 ```
-git https://github.com/thisismitch/doproxy.git
+git clone https://github.com/thisismitch/doproxy.git
 ```
 
 ## Configuration
