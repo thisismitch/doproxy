@@ -1,0 +1,18 @@
+---
+token: 878a490235d53e34b44369b8e78
+ssh_key_ids:           # DigitalOcean ID for your SSH Key
+  - 163420
+userdata_file: user-data.yml
+
+haproxy_cfg_file: haproxy.cfg
+haproxy_cfg_path: /etc/haproxy
+haproxy_template_file: haproxy.cfg.erb
+
+
+inventory_file: inventory
+
+droplet_options:
+  hostname_prefix: auto-nginx
+  region: nyc3
+  size: 1gb
+  image: ubuntu-14-04-x64
