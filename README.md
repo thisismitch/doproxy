@@ -23,12 +23,15 @@ sudo apt-get update
 sudo apt-get install haproxy
 ```
 
-As root, install Ruby 2.1.x:
+Install rbenv prerequisites:
 
 ```
-sudo apt-get update
 sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev git
+```
 
+As **root**, the user that will be running doproxy, install Ruby 2.1.x:
+
+```
 cd
 git clone git://github.com/sstephenson/rbenv.git .rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -41,7 +44,6 @@ exec $SHELL
 
 rbenv install 2.1.5
 rbenv global 2.1.5
-ruby -v
 ```
 
 As root, install [DigitalOcean DropletKit Gem](https://github.com/digitalocean/droplet_kit):
@@ -54,6 +56,7 @@ Then clone the repo to a directory of your choice:
 
 ```
 git clone https://github.com/thisismitch/doproxy.git
+cd doproxy
 ```
 
 ## Configuration
@@ -81,7 +84,7 @@ Feel free to modify the HAProxy config template with your own values.
 
 ### Userdata
 
-The default userdata file, which was written for use with Ubuntu 14.04 images, simply installs Nginx and replaces its index.html file with its hostname, public ip address, and droplet id. This is only for demonstration, and probably isn't useful for you. Replace it with something that will install your application.
+The default userdata file, which was written for use with Ubuntu 14.04 images, simply installs Nginx and replaces its index.html file with its hostname, public ip address, and droplet id (using the [DigitalOcean Metadata](https://www.digitalocean.com/community/tutorials/an-introduction-to-droplet-metadata) service). This is only for demonstration, and probably isn't useful for you. Replace it with something that will install your application.
 
 If you want to use the sample userdata, copy it:
 
