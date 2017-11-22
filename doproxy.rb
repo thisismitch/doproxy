@@ -36,7 +36,7 @@ class DOProxy
       @backend_count = 0
       backend_inventory = File.open(@inventory_file).read
       backend_inventory.each_line do |droplet_id|
-        droplet = @client.droplets.find(id: droplet_id)
+        droplet = @client.droplets.find(id: URI.encode(droplet_id))
         if droplet == '{"id":"not_found","message":"The resource you were accessing could not be found."}'
           raise "Inventory file contains a non-existent droplet id (#{droplet.id})!"
         else

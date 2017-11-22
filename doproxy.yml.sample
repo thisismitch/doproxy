@@ -1,7 +1,7 @@
 ---
-token: 878a490235d53e34b44369b8e78
-ssh_key_ids:           # DigitalOcean ID for your SSH Key
-  - 163420
+token: <YOUR_DO_API_TOKEN>
+ssh_key_ids:
+  - <YOUR_SSH_KEY_FINGERPRINT>
 userdata_file: user-data.yml
 
 haproxy_cfg_file: haproxy.cfg
@@ -15,4 +15,4 @@ droplet_options:
   hostname_prefix: auto-nginx
   region: nyc3
   size: 1gb
-  image: ubuntu-14-04-x64
+  image: ubuntu-16-04-x64

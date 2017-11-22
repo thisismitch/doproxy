@@ -1,6 +1,6 @@
 # doproxy
 
-A Ruby script to scale HTTP service from an HAProxy server (DigitalOcean droplet). Use it on an Ubuntu 14.04 DigitalOcean droplet that is running HAProxy 1.5.
+A Ruby script to scale HTTP service from an HAProxy server (DigitalOcean droplet). Use it on an Ubuntu 16.04 DigitalOcean droplet that is running HAProxy 1.6.
 
 It can:
 
@@ -13,12 +13,12 @@ The choice of using a basic inventory file was intentional, to provide a simple 
 
 ## Installation
 
-Create an Ubuntu 14.04 Droplet on DigitalOcean. Be sure to choose a region that supports private networking and user data.
+Create an Ubuntu 16.04 Droplet on DigitalOcean. The Droplet will need private networking.
 
-[Install HAProxy 1.5](https://www.digitalocean.com/community/tutorials/how-to-implement-ssl-termination-with-haproxy-on-ubuntu-14-04#install-haproxy-15x) on it:
+[Install HAProxy 1.6](https://www.digitalocean.com/community/tutorials/how-to-implement-ssl-termination-with-haproxy-on-ubuntu-14-04#install-haproxy-16x) on it:
 
 ```
-sudo add-apt-repository ppa:vbernat/haproxy-1.5
+sudo add-apt-repository ppa:vbernat/haproxy-1.6
 sudo apt-get update
 sudo apt-get install haproxy
 ```
@@ -29,7 +29,7 @@ Install rbenv prerequisites:
 sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev git
 ```
 
-As **root**, the user that will be running doproxy, install Ruby 2.1.x:
+As **root**, the user that will be running doproxy, install Ruby 2.4.x:
 
 ```
 cd
@@ -42,8 +42,8 @@ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buil
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 exec $SHELL
 
-rbenv install 2.1.5
-rbenv global 2.1.5
+rbenv install 2.4.2
+rbenv global 2.4.2
 ```
 
 As root, install [DigitalOcean DropletKit Gem](https://github.com/digitalocean/droplet_kit):
@@ -63,7 +63,7 @@ cd doproxy
 
 You'll need to generate a **read and write** access token in Digital Ocean's control panel at [https://cloud.digitalocean.com/settings/applications](https://cloud.digitalocean.com/settings/applications).
 
-You will probably want to also look up the IDs or fingerprints of the SSH keys that you want to add to the droplets that doproxy will create. You can do this via [the DigitalOcean control panel](https://cloud.digitalocean.com/ssh_keys) or via the API.
+You will probably want to also look up the IDs or fingerprints of the SSH keys that you want to add to the droplets that doproxy will create. You can do this via [the DigitalOcean control panel](https://cloud.digitalocean.com/settings/security) or via the API.
 
 ### doproxy config
 
@@ -84,7 +84,7 @@ Feel free to modify the HAProxy config template with your own values.
 
 ### Userdata
 
-The default userdata file, which was written for use with Ubuntu 14.04 images, simply installs Nginx and replaces its index.html file with its hostname, public ip address, and droplet id (using the [DigitalOcean Metadata](https://www.digitalocean.com/community/tutorials/an-introduction-to-droplet-metadata) service). This is only for demonstration, and probably isn't useful for you. Replace it with something that will install your application.
+The default userdata file, which was written for use with Ubuntu 16.04 images, simply installs Nginx and replaces its index.html file with its hostname, public ip address, and droplet id (using the [DigitalOcean Metadata](https://www.digitalocean.com/community/tutorials/an-introduction-to-droplet-metadata) service). This is only for demonstration, and probably isn't useful for you. Replace it with something that will install your application.
 
 If you want to use the sample userdata, copy it:
 
