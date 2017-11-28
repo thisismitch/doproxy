@@ -18,7 +18,6 @@ Create an Ubuntu 16.04 Droplet on DigitalOcean. The Droplet will need private ne
 [Install HAProxy 1.6](https://www.digitalocean.com/community/tutorials/how-to-implement-ssl-termination-with-haproxy-on-ubuntu-14-04#install-haproxy-16x) on it:
 
 ```
-sudo add-apt-repository ppa:vbernat/haproxy-1.6
 sudo apt-get update
 sudo apt-get install haproxy
 ```
